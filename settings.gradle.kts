@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "HWAppChallenge"
 include(":app")
+include(":domain")

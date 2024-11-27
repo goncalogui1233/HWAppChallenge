@@ -1,4 +1,4 @@
-package com.goncalo.myapplication.ui.theme
+package com.goncalo.myapplication.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

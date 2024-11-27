@@ -1,4 +1,4 @@
-package com.goncalo.myapplication.ui.theme
+package com.goncalo.myapplication.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

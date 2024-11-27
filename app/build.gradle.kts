@@ -69,9 +69,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //Retrofit
     implementation (libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    //RxJava
+    implementation (libs.rxjava3.rxjava)
+    implementation (libs.adapter.rxjava3)
+
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
 }
 
 kapt {
