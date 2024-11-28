@@ -1,6 +1,7 @@
 package com.goncalo.myapplication.presentation.property_list.views
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,19 +34,22 @@ import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
 import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
 
 @Composable
-fun BuildPropertyItemWrapWidth(modifier: Modifier = Modifier, item: Property) {
-    PropertyListItem(modifier = modifier.wrapContentWidth(), item = item)
+fun BuildPropertyItemWrapWidth(modifier: Modifier = Modifier, item: Property, onItemClicked: (Int) -> Unit) {
+    PropertyListItem(modifier = modifier.wrapContentWidth(), item = item, onItemClicked = onItemClicked)
 }
 
 @Composable
-fun BuildPropertyItemFullWidth(modifier: Modifier = Modifier, item: Property) {
-    PropertyListItem(modifier = modifier.fillMaxWidth(), item = item)
+fun BuildPropertyItemFullWidth(modifier: Modifier = Modifier, item: Property, onItemClicked: (Int) -> Unit) {
+    PropertyListItem(modifier = modifier.fillMaxWidth(), item = item, onItemClicked = onItemClicked)
 }
 
 @Composable
-private fun PropertyListItem(modifier: Modifier, item: Property) {
+private fun PropertyListItem(modifier: Modifier, item: Property, onItemClicked: (Int) -> Unit) {
     Card(
-        modifier = modifier.wrapContentHeight().padding(10.dp),
+        modifier = modifier
+            .wrapContentHeight()
+            .padding(10.dp)
+            .clickable { onItemClicked.invoke(item.propertyId) },
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
         colors = CardDefaults.cardColors().copy(containerColor = Color.White)
     ) {

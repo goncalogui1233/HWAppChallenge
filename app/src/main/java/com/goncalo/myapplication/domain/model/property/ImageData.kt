@@ -11,3 +11,5 @@ data class ImageData(
     val imageSuffix: String
 
 )
+
+fun ImageData.getFormattedURL() = "https://${imagePrefix}${imageSuffix}"

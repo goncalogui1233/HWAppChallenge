@@ -11,7 +11,7 @@ data class PriceRates(
     var base: String,
 
     @SerializedName("rates")
-    var priceRates: HashMap<String, Double> = hashMapOf()
+    var priceRates: Map<String, Double> = mapOf()
 
 ) {
 }

@@ -1,4 +1,4 @@
-package com.goncalo.myapplication.presentation.components
+package com.goncalo.myapplication.presentation.common.components
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode

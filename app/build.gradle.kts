@@ -81,12 +81,15 @@ dependencies {
     implementation (libs.rxjava3.rxjava)
     implementation (libs.adapter.rxjava3)
 
+    implementation(libs.androidx.runtime.rxjava3)
+
+
     //Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
     //Compose Navigation
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
 
 kapt {

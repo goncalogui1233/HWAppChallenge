@@ -12,11 +12,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.goncalo.myapplication.presentation.PropertyViewModel
+import androidx.navigation.navArgument
+import com.goncalo.myapplication.presentation.property_detail.screen.PropertyDetailScreen
 import com.goncalo.myapplication.presentation.property_list.screen.PropertyListScreen
+import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyViewModel
 import com.goncalo.myapplication.presentation.ui.theme.HWAppChallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,11 +42,22 @@ class MainActivity : ComponentActivity() {
                         .padding(innerPadding)) {
                         NavHost(navController = navController, startDestination = Screens.PropertyList.route) {
                             composable(Screens.PropertyList.route) {
-                                PropertyListScreen(viewModel = viewModel)
+                                PropertyListScreen(navController = navController, viewModel = viewModel)
                             }
 
-                            composable(Screens.PropertyDetails.route) {
-
+                            composable(route = Screens.PropertyDetails.route+"/{propertyId}", arguments = listOf(
+                                navArgument("propertyId") {
+                                    type = NavType.IntType
+                                }
+                            )) {
+                                val propertyId = it.arguments?.getInt("propertyId")
+                                propertyId?.let {
+                                    PropertyDetailScreen(
+                                        navController = navController,
+                                        propertyId = propertyId,
+                                        viewModel = hiltViewModel()
+                                    )
+                                }
                             }
                         }
                     }

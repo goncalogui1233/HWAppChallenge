@@ -1,37 +1,30 @@
 package com.goncalo.myapplication.presentation.property_list.screen
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.goncalo.myapplication.R
+import com.goncalo.myapplication.Screens
 import com.goncalo.myapplication.domain.model.property.Property
-import com.goncalo.myapplication.presentation.PropertyViewModel
-import com.goncalo.myapplication.presentation.UIState
-import com.goncalo.myapplication.presentation.components.ShimmerEffect
+import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
+import com.goncalo.myapplication.presentation.common.screens.BuildErrorScreen
+import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyViewModel
+import com.goncalo.myapplication.presentation.property_list.viewmodel.UIState
 import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyItemFullWidth
 import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyItemWrapWidth
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
@@ -42,7 +35,6 @@ fun PropertyListScreen(
     viewModel: PropertyViewModel,
     navController: NavController
 ) {
-    viewModel.getPropertiesList()
     Box(modifier = modifier) {
         Column {
             when (val v = viewModel.propertyList.collectAsState().value) {
@@ -51,7 +43,7 @@ fun PropertyListScreen(
                 }
 
                 is UIState.Content -> {
-                    BuildContentScreen(navController = navController, propertyList = v.propertyList)
+                    BuildContentScreen(navController = navController, propertyList = v.content)
                 }
 
                 is UIState.Error -> {
@@ -85,41 +77,6 @@ fun BuildLoadingScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BuildErrorScreen(
-    modifier: Modifier = Modifier,
-    errorMessage: String,
-    retryButtonAction: () -> Unit
-) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_sad_face),
-            contentDescription = null,
-            modifier = Modifier.size(64.dp)
-        )
-        Text(
-            text = errorMessage,
-            style = TextStyle(
-                color = Color101010,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Center
-            ),
-            modifier = Modifier.padding(top = 8.dp)
-
-        )
-
-        Button(onClick = retryButtonAction, modifier = Modifier.padding(top = 8.dp)) {
-            Text(
-                text = "Retry",
-            )
-        }
-    }
-}
-
-@Composable
 fun BuildContentScreen(modifier: Modifier = Modifier, navController: NavController, propertyList: List<Property>) {
     val notFeaturedList = propertyList.filter { it.isPropertyFeatured.not() }
     val featuredList = propertyList.filter { it.isPropertyFeatured }
@@ -136,7 +93,7 @@ fun BuildContentScreen(modifier: Modifier = Modifier, navController: NavControll
         item {
             Spacer(modifier = Modifier.height(10.dp))
             Text(text = "Featured Items", style = TextStyle(color = Color101010, fontSize = 20.sp))
-            Featured(list = featuredList)
+            Featured(navController = navController, list = featuredList)
         }
 
         item {
@@ -145,16 +102,24 @@ fun BuildContentScreen(modifier: Modifier = Modifier, navController: NavControll
         }
 
         items(notFeaturedList) {
-            BuildPropertyItemFullWidth(item = it)
+            BuildPropertyItemFullWidth(item = it) { id ->
+                onItemClicked(navController, id)
+            }
         }
     }
 }
 
 @Composable
-fun Featured(modifier: Modifier = Modifier, list: List<Property>) {
+fun Featured(modifier: Modifier = Modifier, navController: NavController, list: List<Property>) {
     LazyRow(modifier = modifier) {
         items(list) {
-            BuildPropertyItemWrapWidth(item = it)
+            BuildPropertyItemWrapWidth(item = it) { id ->
+                onItemClicked(navController, id)
+            }
         }
     }
+}
+
+private fun onItemClicked(navController: NavController, id: Int) {
+    navController.navigate(Screens.PropertyDetails.route + "/$id")
 }
