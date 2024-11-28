@@ -26,6 +26,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.goncalo.myapplication.R
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.presentation.PropertyViewModel
@@ -36,17 +37,21 @@ import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyI
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 
 @Composable
-fun PropertyListScreen(modifier: Modifier = Modifier, viewModel: PropertyViewModel) {
+fun PropertyListScreen(
+    modifier: Modifier = Modifier,
+    viewModel: PropertyViewModel,
+    navController: NavController
+) {
     viewModel.getPropertiesList()
     Box(modifier = modifier) {
         Column {
-            when(val v = viewModel.propertyList.collectAsState().value) {
+            when (val v = viewModel.propertyList.collectAsState().value) {
                 is UIState.Loading -> {
                     BuildLoadingScreen()
                 }
 
                 is UIState.Content -> {
-                    BuildContentScreen(propertyList = v.propertyList)
+                    BuildContentScreen(navController = navController, propertyList = v.propertyList)
                 }
 
                 is UIState.Error -> {
@@ -115,7 +120,7 @@ fun BuildErrorScreen(
 }
 
 @Composable
-fun BuildContentScreen(modifier: Modifier = Modifier, propertyList: List<Property>) {
+fun BuildContentScreen(modifier: Modifier = Modifier, navController: NavController, propertyList: List<Property>) {
     val notFeaturedList = propertyList.filter { it.isPropertyFeatured.not() }
     val featuredList = propertyList.filter { it.isPropertyFeatured }
 

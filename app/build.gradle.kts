@@ -85,6 +85,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
+    //Compose Navigation
+    implementation(libs.androidx.navigation.compose)
 }
 
 kapt {

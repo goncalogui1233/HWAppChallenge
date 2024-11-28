@@ -5,12 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.goncalo.myapplication.presentation.PropertyViewModel
 import com.goncalo.myapplication.presentation.property_list.screen.PropertyListScreen
 import com.goncalo.myapplication.presentation.ui.theme.HWAppChallengeTheme
@@ -27,16 +31,30 @@ class MainActivity : ComponentActivity() {
         setContent {
             HWAppChallengeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PropertyListScreen(
-                        viewModel = viewModel,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                    )
+                    val navController = rememberNavController()
+
+                    Box(modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)) {
+                        NavHost(navController = navController, startDestination = Screens.PropertyList.route) {
+                            composable(Screens.PropertyList.route) {
+                                PropertyListScreen(viewModel = viewModel)
+                            }
+
+                            composable(Screens.PropertyDetails.route) {
+
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+sealed class Screens(val route: String) {
+    data object PropertyList: Screens("property_list")
+    data object PropertyDetails: Screens("property_details")
 }
 
 @Preview(showBackground = true)
