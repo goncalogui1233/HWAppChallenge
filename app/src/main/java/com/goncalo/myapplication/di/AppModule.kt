@@ -1,8 +1,12 @@
 package com.goncalo.myapplication.di
 
 import com.goncalo.myapplication.data.network.IHWAppChallengeApi
+import com.goncalo.myapplication.data.repository.NetworkTrackingStatsImpl
 import com.goncalo.myapplication.data.repository.PropertyRepositoryImpl
+import com.goncalo.myapplication.data.repository.RatesRepositoryImpl
+import com.goncalo.myapplication.domain.repository.INetworkTrackRepository
 import com.goncalo.myapplication.domain.repository.IPropertyRepository
+import com.goncalo.myapplication.domain.repository.IRatesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,9 +37,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePropertyRepository(api: IHWAppChallengeApi): IPropertyRepository = PropertyRepositoryImpl(api)
+    fun providePropertyRepository(api: IHWAppChallengeApi): IPropertyRepository =
+        PropertyRepositoryImpl(api)
 
+    @Provides
+    @Singleton
+    fun provideRatesRepository(api: IHWAppChallengeApi): IRatesRepository = RatesRepositoryImpl(api)
 
-
+    @Provides
+    @Singleton
+    fun provideNetworkTrackingStatsRepository(api: IHWAppChallengeApi): INetworkTrackRepository =
+        NetworkTrackingStatsImpl(api)
 
 }

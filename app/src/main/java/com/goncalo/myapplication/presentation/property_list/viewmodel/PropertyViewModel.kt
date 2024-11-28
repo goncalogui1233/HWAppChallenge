@@ -3,7 +3,8 @@ package com.goncalo.myapplication.presentation.property_list.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.goncalo.myapplication.domain.model.property.Property
-import com.goncalo.myapplication.domain.repository.IPropertyRepository
+import com.goncalo.myapplication.domain.use_case.GetPropertyListUseCase
+import com.goncalo.myapplication.domain.use_case.GetTrackNetworkStatsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PropertyViewModel @Inject constructor(
-    private val repository: IPropertyRepository
+    private val getPropertyListUseCase: GetPropertyListUseCase,
+    private val getTrackNetworkStatsUseCase: GetTrackNetworkStatsUseCase
 ) : ViewModel() {
 
     private val _propertyList: MutableStateFlow<UIState<List<Property>>?> = MutableStateFlow(null)
@@ -25,11 +27,16 @@ class PropertyViewModel @Inject constructor(
 
     fun getPropertiesList() = viewModelScope.launch(Dispatchers.IO) {
         _propertyList.emit(UIState.Loading)
-        repository.getPropertiesList()?.let {
-            _propertyList.emit(UIState.Content(it.listProperties))
-        } ?: kotlin.run {
-            _propertyList.emit(UIState.Error("Oh no, an error appeared whild loading information. \nPlease, try again"))
+
+        with(getPropertyListUseCase()) {
+            if(isSuccess) {
+                _propertyList.emit(UIState.Content(content ?: arrayListOf()))
+                getTrackNetworkStatsUseCase("load_list", this.requestDuration)
+            } else {
+                _propertyList.emit(UIState.Error(errorMessage.orEmpty()))
+            }
         }
+        //_propertyList.emit(UIState.Error("Oh no, an error appeared whild loading information. \nPlease, try again"))
     }
 }
 

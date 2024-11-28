@@ -1,13 +1,10 @@
 package com.goncalo.myapplication.domain.repository
 
 import com.goncalo.myapplication.domain.model.property.Properties
-import com.goncalo.myapplication.domain.model.rates.PriceRates
-import io.reactivex.rxjava3.core.Single
+import retrofit2.Response
 
 interface IPropertyRepository {
 
-    suspend fun getPropertiesList(): Properties?
-
-    fun getRates(): Single<PriceRates>
+    suspend fun getPropertiesList(): Response<Properties>
 
 }

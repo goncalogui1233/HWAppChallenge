@@ -5,11 +5,11 @@ import com.goncalo.myapplication.domain.repository.IPropertyRepository
 import javax.inject.Inject
 
 class GetPropertyUseCase @Inject constructor(
-    private val repository: IPropertyRepository
+    private val repository: IPropertyRepository,
 ) {
 
     suspend operator fun invoke(propertyId: Int): Property? {
-        return try {
+        /*return try {
             val response = repository.getPropertiesList()
             response?.let { r ->
                 r.listProperties.firstOrNull { it.propertyId == propertyId }
@@ -18,7 +18,9 @@ class GetPropertyUseCase @Inject constructor(
             }
         } catch (e: Exception) {
             null
-        }
+        }*/
+
+        return null
     }
 
 }
