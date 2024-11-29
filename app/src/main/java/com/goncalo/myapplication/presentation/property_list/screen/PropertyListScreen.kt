@@ -21,10 +21,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.goncalo.myapplication.Screens
 import com.goncalo.myapplication.domain.model.property.Property
+import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.common.screens.BuildErrorScreen
 import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyViewModel
-import com.goncalo.myapplication.presentation.property_list.viewmodel.UIState
 import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyItemFullWidth
 import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyItemWrapWidth
 import com.goncalo.myapplication.presentation.ui.theme.Color101010

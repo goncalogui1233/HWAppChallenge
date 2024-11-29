@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.domain.use_case
 
+import com.goncalo.myapplication.common.Result
 import com.goncalo.myapplication.domain.model.property.Properties
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.repository.IPropertyRepository

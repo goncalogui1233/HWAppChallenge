@@ -6,7 +6,7 @@ import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.use_case.GetPropertyUseCase
 import com.goncalo.myapplication.domain.use_case.GetRatesUseCase
 import com.goncalo.myapplication.domain.use_case.GetTrackNetworkStatsUseCase
-import com.goncalo.myapplication.presentation.property_list.viewmodel.UIState
+import com.goncalo.myapplication.presentation.common.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

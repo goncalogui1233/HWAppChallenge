@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.use_case.GetPropertyListUseCase
 import com.goncalo.myapplication.domain.use_case.GetTrackNetworkStatsUseCase
+import com.goncalo.myapplication.presentation.common.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,11 +39,4 @@ class PropertyViewModel @Inject constructor(
         }
         //_propertyList.emit(UIState.Error("Oh no, an error appeared whild loading information. \nPlease, try again"))
     }
-}
-
-
-sealed class UIState<out T> {
-    object Loading : UIState<Nothing>()
-    data class Content<T>(val content: T) : UIState<T>()
-    data class Error(val errorMessage: String) : UIState<Nothing>()
 }

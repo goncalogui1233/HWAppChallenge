@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.domain.use_case
 
+import com.goncalo.myapplication.common.Result
 import com.goncalo.myapplication.domain.model.rates.PriceRates
 import com.goncalo.myapplication.domain.repository.IRatesRepository
 import io.reactivex.rxjava3.core.Single

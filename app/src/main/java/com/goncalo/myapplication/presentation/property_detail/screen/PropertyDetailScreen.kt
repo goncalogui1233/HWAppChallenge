@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.goncalo.myapplication.domain.model.property.Property
+import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.common.screens.BuildErrorScreen
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
@@ -34,7 +35,6 @@ import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailN
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailPriceRates
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailRating
 import com.goncalo.myapplication.presentation.property_detail.views.BuildImageViewPager
-import com.goncalo.myapplication.presentation.property_list.viewmodel.UIState
 
 @Composable
 fun PropertyDetailScreen(

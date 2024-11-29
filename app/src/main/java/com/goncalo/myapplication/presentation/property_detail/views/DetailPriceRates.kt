@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
-import com.goncalo.myapplication.presentation.property_list.viewmodel.UIState
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 
 @Composable
