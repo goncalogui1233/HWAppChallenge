@@ -11,13 +11,18 @@ class GetRatesUseCase @Inject constructor(
 ) {
     private val ratesToUse = listOf("EUR", "USD", "GBP")
 
-    operator fun invoke(basePrice: Double): Single<List<Pair<String, Double>>> {
-         return repository.getRates().map {
-             filterRateList(it, basePrice)
-         }
+    operator fun invoke(basePrice: Double): Single<Result<List<Pair<String, Double>>>> {
+        return repository.getRates().map {
+            filterRateList(it, basePrice)
+        }.onErrorReturn {
+            Result(
+                isSuccess = false,
+                errorMessage = "Null"
+            )
+        }
     }
 
-    private fun filterRateList(priceRates: PriceRates, basePrice: Double) : List<Pair<String, Double>> {
+    private fun filterRateList(priceRates: PriceRates, basePrice: Double) : Result<List<Pair<String, Double>>> {
         val filteredList = priceRates.priceRates.filter { it.key in ratesToUse }
         val convertedPriceList = arrayListOf<Pair<String, Double>>()
         val decimalFormat = DecimalFormat("#.##")
@@ -28,7 +33,10 @@ class GetRatesUseCase @Inject constructor(
             convertedPriceList.add(Pair(it.key, decimalFormat.format(convertedPrice).toDouble()))
         }
 
-        return convertedPriceList
+        return Result<List<Pair<String, Double>>>(
+            isSuccess = true,
+            content = convertedPriceList
+        )
     }
 
 }

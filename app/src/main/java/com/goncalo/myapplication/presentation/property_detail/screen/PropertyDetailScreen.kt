@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material3.Icon
@@ -19,9 +21,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.goncalo.myapplication.domain.model.property.Property
+import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.common.screens.BuildErrorScreen
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailAddress
@@ -48,7 +52,7 @@ fun PropertyDetailScreen(
 
     when(v) {
         is UIState.Loading -> {
-
+            BuildDetailLoadingScreen()
         }
 
         is UIState.Content -> BuildDetailScreen(
@@ -124,5 +128,58 @@ fun BuildDetailScreen(
                 priceRates.invoke()
             }
         }
+    }
+}
+
+@Composable
+fun BuildDetailLoadingScreen(modifier: Modifier = Modifier) {
+
+    Column(modifier = modifier) {
+        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+            ShimmerEffect(modifier = Modifier
+                .width(325.dp)
+                .height(215.dp)
+                .padding(16.dp)
+                .clip(RoundedCornerShape(10.dp)))
+        }
+
+        Row {
+            ShimmerEffect(modifier = Modifier
+                .width(200.dp)
+                .height(25.dp)
+                .padding(horizontal = 16.dp)
+                .clip(RoundedCornerShape(10.dp)))
+            Spacer(modifier = modifier.weight(1f))
+
+            ShimmerEffect(modifier = Modifier
+                .width(100.dp)
+                .height(35.dp)
+                .padding(horizontal = 16.dp)
+                .clip(RoundedCornerShape(10.dp)))
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        ShimmerEffect(modifier = Modifier
+            .width(300.dp)
+            .height(25.dp)
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(10.dp)))
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        ShimmerEffect(modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(10.dp)))
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        ShimmerEffect(modifier = Modifier
+            .fillMaxWidth()
+            .height(350.dp)
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(10.dp)))
     }
 }
