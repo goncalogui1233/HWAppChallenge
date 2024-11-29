@@ -34,7 +34,7 @@ fun BuildDetailPriceRates(
             BuildPriceRatesLoading()
         }
         is UIState.Content -> {
-            val rateList = (v.value as UIState.Content<List<Pair<String, Double>>>).content
+            val rateList = (v.value as UIState.Content<List<Pair<String, String>>>).content
             BuildPriceRateContent(rateList = rateList)
         }
 
@@ -71,7 +71,7 @@ fun BuildPriceRatesLoading(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: List<Pair<String, Double>>) {
+fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: List<Pair<String, String>>) {
     Column(modifier = modifier) {
         Text(
             text = "Other currencies? We got you",
@@ -90,7 +90,7 @@ fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: List<Pair<Str
                 Card(modifier = Modifier.padding(horizontal = 5.dp)) {
                     Row(modifier = Modifier.padding(all = 15.dp)) {
                         Text(text = it.first)
-                        Text(text = it.second.toString())
+                        Text(text = it.second)
                     }
                 }
             }

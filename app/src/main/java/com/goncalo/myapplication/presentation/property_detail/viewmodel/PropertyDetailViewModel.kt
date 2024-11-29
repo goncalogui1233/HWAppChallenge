@@ -2,6 +2,7 @@ package com.goncalo.myapplication.presentation.property_detail.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.use_case.GetPropertyUseCase
 import com.goncalo.myapplication.domain.use_case.GetRatesUseCase
@@ -32,7 +33,7 @@ class PropertyDetailViewModel @Inject constructor(
                 content?.let {
                     _detailUiState.value = UIState.Content(content)
                 }
-                getTrackNetworkStatsUseCase("load-details", requestDuration)
+                getTrackNetworkStatsUseCase(Constants.LOAD_DETAILS, requestDuration)
             } else {
                 _detailUiState.value = UIState.Error(errorMessage.orEmpty())
             }

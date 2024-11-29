@@ -24,7 +24,7 @@ import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.common.screens.BuildErrorScreen
-import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyViewModel
+import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyListViewModel
 import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyItemFullWidth
 import com.goncalo.myapplication.presentation.property_list.views.BuildPropertyItemWrapWidth
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
@@ -32,7 +32,7 @@ import com.goncalo.myapplication.presentation.ui.theme.Color101010
 @Composable
 fun PropertyListScreen(
     modifier: Modifier = Modifier,
-    viewModel: PropertyViewModel,
+    viewModel: PropertyListViewModel,
     navController: NavController
 ) {
     Box(modifier = modifier) {

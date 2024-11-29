@@ -2,6 +2,7 @@ package com.goncalo.myapplication.presentation.property_list.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.use_case.GetPropertyListUseCase
 import com.goncalo.myapplication.domain.use_case.GetTrackNetworkStatsUseCase
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PropertyViewModel @Inject constructor(
+class PropertyListViewModel @Inject constructor(
     private val getPropertyListUseCase: GetPropertyListUseCase,
     private val getTrackNetworkStatsUseCase: GetTrackNetworkStatsUseCase
 ) : ViewModel() {
@@ -32,7 +33,7 @@ class PropertyViewModel @Inject constructor(
         with(getPropertyListUseCase()) {
             if(isSuccess) {
                 _propertyList.emit(UIState.Content(content ?: arrayListOf()))
-                getTrackNetworkStatsUseCase("load_list", this.requestDuration)
+                getTrackNetworkStatsUseCase(Constants.LOAD_LIST, this.requestDuration)
             } else {
                 _propertyList.emit(UIState.Error(errorMessage.orEmpty()))
             }

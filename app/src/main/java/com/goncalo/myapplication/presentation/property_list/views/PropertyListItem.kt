@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.goncalo.myapplication.R
 import com.goncalo.myapplication.domain.model.property.Property
+import com.goncalo.myapplication.domain.model.property.getFormattedURL
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
 import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
@@ -58,7 +59,7 @@ private fun PropertyListItem(modifier: Modifier, item: Property, onItemClicked: 
             .padding(5.dp)) {
 
             AsyncImage(
-                model = "https://${item.imageDataList.first().imagePrefix}${item.imageDataList.first().imageSuffix}",
+                model = item.imageDataList.first().getFormattedURL(),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.di
 
+import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.data.network.IHWAppChallengeApi
 import com.goncalo.myapplication.data.repository.NetworkTrackingStatsImpl
 import com.goncalo.myapplication.data.repository.PropertyRepositoryImpl
@@ -23,7 +24,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofitInstance() = Retrofit.Builder()
-        .baseUrl("https://gist.githubusercontent.com/PedroTrabulo-Hostelworld/")
+        .baseUrl(Constants.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .build()

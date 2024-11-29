@@ -20,14 +20,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.goncalo.myapplication.presentation.property_detail.screen.PropertyDetailScreen
 import com.goncalo.myapplication.presentation.property_list.screen.PropertyListScreen
-import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyViewModel
+import com.goncalo.myapplication.presentation.property_list.viewmodel.PropertyListViewModel
 import com.goncalo.myapplication.presentation.ui.theme.HWAppChallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val viewModel by viewModels<PropertyViewModel>()
+    val viewModel by viewModels<PropertyListViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
