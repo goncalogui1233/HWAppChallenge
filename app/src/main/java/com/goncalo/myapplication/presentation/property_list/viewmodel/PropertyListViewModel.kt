@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.domain.model.property.Property
-import com.goncalo.myapplication.domain.use_case.GetPropertyListUseCase
-import com.goncalo.myapplication.domain.use_case.GetTrackNetworkStatsUseCase
+import com.goncalo.myapplication.domain.use_case.network.GetTrackNetworkStatsUseCase
+import com.goncalo.myapplication.domain.use_case.property.GetPropertyListUseCase
 import com.goncalo.myapplication.presentation.common.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

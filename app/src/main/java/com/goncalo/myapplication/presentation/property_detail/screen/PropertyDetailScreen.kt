@@ -43,31 +43,28 @@ fun PropertyDetailScreen(
     propertyId: Int,
     viewModel: PropertyDetailViewModel
 ) {
-
-    val v = viewModel.detailUIState.collectAsState().value
-
     LaunchedEffect(Unit) {
         viewModel.getProperty(propertyId)
     }
 
-    when(v) {
+    when(val uiState = viewModel.detailUIState.collectAsState().value) {
         is UIState.Loading -> {
             BuildDetailLoadingScreen()
         }
 
         is UIState.Content -> BuildDetailScreen(
             modifier = modifier,
-            item = v.content,
+            item = uiState.content,
             navController = navController
         ) {
             BuildDetailPriceRates(
                 viewModel = viewModel,
-                propertyPrice = v.content.lowPriceNight.priceValue.toDouble()
+                propertyPrice = uiState.content.lowPriceNight.priceValue.toDouble()
             )
         }
 
 
-        is UIState.Error -> BuildErrorScreen(errorMessage = v.errorMessage) {
+        is UIState.Error -> BuildErrorScreen(errorMessage = uiState.errorMessage) {
             viewModel.getProperty(propertyId)
         }
 

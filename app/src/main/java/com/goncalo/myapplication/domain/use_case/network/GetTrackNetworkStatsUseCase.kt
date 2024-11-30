@@ -1,4 +1,4 @@
-package com.goncalo.myapplication.domain.use_case
+package com.goncalo.myapplication.domain.use_case.network
 
 import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.domain.repository.INetworkTrackRepository
