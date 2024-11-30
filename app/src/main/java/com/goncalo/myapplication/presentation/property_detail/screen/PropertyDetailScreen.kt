@@ -18,11 +18,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.presentation.common.UIState
@@ -47,7 +47,7 @@ fun PropertyDetailScreen(
         viewModel.getProperty(propertyId)
     }
 
-    when(val uiState = viewModel.detailUIState.collectAsState().value) {
+    when(val uiState = viewModel.detailUIState.collectAsStateWithLifecycle().value) {
         is UIState.Loading -> {
             BuildDetailLoadingScreen()
         }

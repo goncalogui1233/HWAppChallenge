@@ -11,11 +11,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rxjava3.subscribeAsState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
@@ -27,7 +28,11 @@ fun BuildDetailPriceRates(
     propertyPrice: Double,
     viewModel: PropertyDetailViewModel
 ) {
-    val v = viewModel.getPriceRates(propertyPrice).subscribeAsState(initial = UIState.Loading)
+    LaunchedEffect(Unit) {
+        viewModel.getPriceRates(propertyPrice)
+    }
+
+    val v = viewModel.coinRates.collectAsStateWithLifecycle(initialValue = null)
 
     when (v.value) {
         is UIState.Loading -> {
@@ -40,6 +45,10 @@ fun BuildDetailPriceRates(
 
         is UIState.Error -> {
             // Don't show any information
+        }
+
+        else -> {
+
         }
     }
 }

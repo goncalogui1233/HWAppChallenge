@@ -11,28 +11,21 @@ class GetRatesUseCase @Inject constructor(
     private val repository: IRatesRepository
 ) {
     private val ratesToUse = listOf("EUR", "USD", "GBP")
-    private var rates: PriceRates? = null
 
     operator fun invoke(basePrice: Double): Single<Result<List<Pair<String, String>>>> {
-        return if (rates != null) {
-            Single.just(filterRateList(rates!!, basePrice))
-        } else {
-            repository.getRates().map {
-                rates = it
-                filterRateList(it, basePrice)
-            }.onErrorReturn {
-                Result(
-                    isSuccess = false,
-                    errorMessage = "Null"
-                )
-            }
+        return repository.getRates().map {
+            filterRateList(it, basePrice)
+        }.onErrorReturn {
+            Result(
+                isSuccess = false,
+                errorMessage = "There was a problem loading rates. Try again later"
+            )
         }
     }
 
     private fun filterRateList(priceRates: PriceRates, basePrice: Double) : Result<List<Pair<String, String>>> {
         val filteredList = priceRates.priceRates.filter { it.key in ratesToUse }
         val convertedPriceList = arrayListOf<Pair<String, String>>()
-
 
         filteredList.forEach {
             val convertedPrice = basePrice.times(it.value)

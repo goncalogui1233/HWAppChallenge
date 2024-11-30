@@ -9,6 +9,7 @@ import com.goncalo.myapplication.domain.use_case.property.GetPropertyUseCase
 import com.goncalo.myapplication.domain.use_case.rates.GetRatesUseCase
 import com.goncalo.myapplication.presentation.common.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,6 +26,9 @@ class PropertyDetailViewModel @Inject constructor(
     private val _detailUiState: MutableStateFlow<UIState<Property>?> = MutableStateFlow(null)
     val detailUIState = _detailUiState.asStateFlow()
 
+    private val _coinRates: MutableStateFlow<UIState<List<Pair<String, String>>>?> = MutableStateFlow(null)
+    val coinRates = _coinRates.asStateFlow()
+
     fun getProperty(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         _detailUiState.value = UIState.Loading
 
@@ -40,12 +44,20 @@ class PropertyDetailViewModel @Inject constructor(
         }
     }
 
-    fun getPriceRates(propertyPrice: Double) = getRatesUseCase(propertyPrice).map {
-        if(it.isSuccess) {
-            UIState.Content(it.content)
-        } else {
-            UIState.Error("")
-        }
+    fun getPriceRates(propertyPrice: Double) {
+        getRatesUseCase(propertyPrice).observeOn(Schedulers.io()).subscribeOn(Schedulers.io())
+            .subscribe({
+                if (it.isSuccess) {
+                    it.content?.let { c ->
+                        _coinRates.value = UIState.Content(c)
+                    }
+                } else {
+                    _coinRates.value = UIState.Error(it.errorMessage.orEmpty())
+                }
+            }, {
+                _coinRates.value = UIState.Error("")
+            })
     }
+
 
 }
