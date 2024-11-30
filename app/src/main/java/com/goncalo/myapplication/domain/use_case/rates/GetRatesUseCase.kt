@@ -27,15 +27,26 @@ class GetRatesUseCase @Inject constructor(
         val filteredList = priceRates.priceRates.filter { it.key in ratesToUse }
         val convertedPriceList = arrayListOf<Pair<String, String>>()
 
-        filteredList.forEach {
-            val convertedPrice = basePrice.times(it.value)
-            convertedPriceList.add(Pair(it.key, convertedPrice.formatDecimalDigits(2)))
+
+        return if(filteredList.isNotEmpty()) {
+            filteredList.forEach {
+                val convertedPrice = basePrice.times(it.value)
+                convertedPriceList.add(Pair(it.key, convertedPrice.formatDecimalDigits(2)))
+            }
+             Result<List<Pair<String, String>>>(
+                isSuccess = true,
+                content = convertedPriceList
+            )
+        } else {
+             Result(
+                isSuccess = false,
+                errorMessage = "No elements to check"
+            )
         }
 
-        return Result<List<Pair<String, String>>>(
-            isSuccess = true,
-            content = convertedPriceList
-        )
+
+
+
     }
 
 }

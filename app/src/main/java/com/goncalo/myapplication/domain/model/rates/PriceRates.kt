@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.domain.model.rates
 
+import com.goncalo.myapplication.common.extensions.empty
 import com.google.gson.annotations.SerializedName
 
 data class PriceRates(
@@ -8,10 +9,10 @@ data class PriceRates(
     var timestamp: Long = 0L,
 
     @SerializedName("base")
-    var base: String,
+    var base: String = String().empty(),
 
     @SerializedName("rates")
-    var priceRates: Map<String, Double> = mapOf()
+    var priceRates: HashMap<String, Double> = hashMapOf()
 
 ) {
 }
