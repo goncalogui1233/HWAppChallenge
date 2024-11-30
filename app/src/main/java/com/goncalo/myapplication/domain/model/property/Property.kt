@@ -20,7 +20,7 @@ data class Property (
     var lowPriceNight: Price = Price(),
 
     @SerializedName("imagesGallery")
-    var imageDataList: List<ImageData>,
+    var imageDataList: List<ImageData> = arrayListOf(),
 
     @SerializedName("address1")
     var addressOne: String,
@@ -32,7 +32,7 @@ data class Property (
     var description: String,
 
     @SerializedName("ratingBreakdown")
-    var rateCategory: RateBreakdown
+    var rateCategory: RateBreakdown = RateBreakdown()
 
 )
 

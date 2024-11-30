@@ -90,6 +90,10 @@ dependencies {
 
     //Compose Navigation
     implementation(libs.androidx.hilt.navigation.compose)
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+
 }
 
 kapt {
