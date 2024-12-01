@@ -24,6 +24,12 @@ class GetRatesUseCase @Inject constructor(
         }
     }
 
+
+    /**
+     * This method gets the rates returned by the endpoints and it returns the
+     * ones set in the array "rates to use".
+     * The method calculates the correct price to show on screen
+     */
     private fun filterRateList(priceRates: PriceRates, basePrice: Double) : Result<List<Pair<String, String>>> {
         val filteredList = priceRates.priceRates.filter { it.key in ratesToUse }
         val convertedPriceList = arrayListOf<Pair<String, String>>()
@@ -44,10 +50,5 @@ class GetRatesUseCase @Inject constructor(
                 errorMessage = R.string.rate_use_case_error
             )
         }
-
-
-
-
     }
-
 }

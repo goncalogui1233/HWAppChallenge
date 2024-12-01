@@ -16,10 +16,14 @@ class GetPropertyUseCase @Inject constructor(
     override fun handleException(obj: Exception): Result<Property> {
         return Result(
             isSuccess = false,
-            errorMessage = R.string.rate_use_case_error
+            errorMessage = R.string.property_use_case_error
         )
     }
 
+    /**
+     * This handleSuccess filters and returns only the item
+     * needed on the screen
+     */
     override fun handleSuccess(
         content: Properties,
         requestDuration: Long,
@@ -36,7 +40,7 @@ class GetPropertyUseCase @Inject constructor(
         } ?: run {
             return Result(
                 isSuccess = false,
-                errorMessage = R.string.rate_use_case_error
+                errorMessage = R.string.property_use_case_error
             )
         }
     }
