@@ -12,6 +12,9 @@ fun Double.formatDecimalDigits(decimalDigits: Int): String {
     return "%.${decimalDigits}f".format(value)
 }
 
+/**
+ * This method is used to format the ratings throughout the application
+ */
 fun Double.formatRatingDecimals(): String {
     val decimal = this.div(10)
 

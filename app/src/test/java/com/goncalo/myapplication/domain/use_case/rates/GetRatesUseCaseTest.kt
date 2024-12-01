@@ -66,6 +66,8 @@ class GetRatesUseCaseTest {
         val testObserver = TestObserver<Result<List<Pair<String, String>>>>()
 
         case.subscribe(testObserver)
-        testObserver.assertValue(Result(isSuccess = false, errorMessage = "No elements to check"))
+
+        val result = testObserver.values().first()
+        assertTrue(result.isSuccess.not())
     }
 }

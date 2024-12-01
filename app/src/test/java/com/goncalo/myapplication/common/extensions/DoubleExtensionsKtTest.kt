@@ -16,4 +16,11 @@ class DoubleExtensionsKtTest {
         assertEquals("40.9", 40.86.formatDecimalDigits(1))
     }
 
+    @Test
+    fun testFormatRatingDecimals() {
+        assertEquals("10", 100.0.formatRatingDecimals())
+        assertEquals("9.3", 93.0.formatRatingDecimals())
+        assertEquals("4.7", 47.0.formatRatingDecimals())
+    }
+
 }
