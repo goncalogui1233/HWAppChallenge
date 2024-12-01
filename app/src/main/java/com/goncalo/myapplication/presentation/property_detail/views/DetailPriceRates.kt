@@ -13,10 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
@@ -83,12 +85,12 @@ fun BuildPriceRatesLoading(modifier: Modifier = Modifier) {
 fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: List<Pair<String, String>>) {
     Column(modifier = modifier) {
         Text(
-            text = "Other currencies? We got you",
+            text = stringResource(id = R.string.property_details_other_currencies),
             style = TextStyle(color = Color101010, fontSize = 22.sp)
         )
 
         Text(
-            text = "(lowest price per night)",
+            text = stringResource(id = R.string.property_details_lowest_price),
             style = TextStyle(color = Color101010, fontSize = 14.sp)
         )
 

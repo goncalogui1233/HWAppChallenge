@@ -14,10 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goncalo.myapplication.R
+import com.goncalo.myapplication.common.extensions.formatDecimalDigits
 import com.goncalo.myapplication.domain.model.property.RateBreakdown
 import com.goncalo.myapplication.domain.model.property.Rating
 import com.goncalo.myapplication.domain.model.property.convertToPair
@@ -57,13 +59,13 @@ private fun BuildOverallRating(modifier: Modifier = Modifier, rating: Rating) {
             modifier = Modifier.size(28.dp)
         )
         Text(
-            text = "${rating.overallRating.div(10.0)}",
+            text = rating.overallRating.toDouble().formatDecimalDigits(1),
             style = TextStyle(color = Color101010, fontSize = 22.sp),
             modifier = Modifier.padding(start = 4.dp)
         )
 
         Text(
-            text = "(${rating.ratingCount} reviews)",
+            text = stringResource(id = R.string.property_details_reviews, rating.ratingCount),
             style = TextStyle(color = Color101010, fontSize = 16.sp),
             modifier = Modifier.padding(start = 4.dp)
         )

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">HWAppChallenge</string>
+
+    <!-- Property List -->
+    <string name="property_list_title">Hello there 👋.\nCheck out this amazing hostel list.</string>
+    <string name="featured_item_list">Featured Items</string>
+    <string name="other_choices_list">Other Choices</string>
+    <string name="item_price_starts">Starts at </string>
+    <string name="item_price_night">/night</string>
+    
+    <!-- Property Details -->
+    <string name="property_details_description">Description</string>
+    <string name="property_details_lowest_price">(lowest price per night)</string>
+    <string name="property_details_other_currencies">Other currencies? We got you</string>
+    <string name="property_details_reviews">(%d reviews)</string>
+
 </resources>

@@ -7,9 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.domain.model.property.Price
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
@@ -39,7 +41,7 @@ private fun BuildDetailPrice(modifier: Modifier = Modifier, price: Price) {
             )
         )
         Text(
-            text = "(lowest price per night)",
+            text = stringResource(id = R.string.property_details_lowest_price),
             style = TextStyle(color = Color101010, fontSize = 14.sp)
         )
     }

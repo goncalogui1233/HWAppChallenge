@@ -23,11 +23,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.goncalo.myapplication.R
+import com.goncalo.myapplication.common.extensions.formatDecimalDigits
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.model.property.getFormattedURL
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
@@ -90,7 +92,7 @@ private fun PropertyListItem(modifier: Modifier, item: Property, onItemClicked: 
                         modifier = Modifier.size(20.dp)
                     )
                     Text(
-                        text = "${item.propertyRating.overallRating.div(10.0)}",
+                        text = item.propertyRating.overallRating.toDouble().formatDecimalDigits(1),
                         modifier = Modifier.padding(start = 4.dp)
                     )
                 }
@@ -110,8 +112,8 @@ private fun BuildItemPrice(modifier: Modifier = Modifier, price: String) {
     val textStyle = TextStyle(fontSize = 16.sp, color = ColorE1E1E1)
 
     Row (modifier = modifier){
-        Text(text = "Starts at ", style = textStyle)
-        Text(text = "$price€", style = textStyle.copy(color = Color4C4DDC))
-        Text(text = "/night", style = textStyle)
+        Text(text = stringResource(id = R.string.item_price_starts), style = textStyle)
+        Text(text = " $price€", style = textStyle.copy(color = Color4C4DDC))
+        Text(text = stringResource(id = R.string.item_price_night), style = textStyle)
     }
 }

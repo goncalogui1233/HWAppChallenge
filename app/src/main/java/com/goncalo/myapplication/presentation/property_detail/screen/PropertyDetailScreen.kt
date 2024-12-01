@@ -130,7 +130,6 @@ fun BuildDetailScreen(
 
 @Composable
 fun BuildDetailLoadingScreen(modifier: Modifier = Modifier) {
-
     Column(modifier = modifier) {
         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
             ShimmerEffect(modifier = Modifier

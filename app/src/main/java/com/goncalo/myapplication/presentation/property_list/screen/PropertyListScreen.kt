@@ -14,11 +14,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.Screens
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.presentation.common.UIState
@@ -84,7 +86,7 @@ fun BuildContentScreen(modifier: Modifier = Modifier, navController: NavControll
     LazyColumn(modifier = modifier.padding(horizontal = 10.dp)) {
         item {
             Text(
-                text = "Hello there. \uD83D\uDC4B \nCheck out this amazing hostel list.",
+                text = stringResource(id = R.string.property_list_title),
                 style = TextStyle(color = Color101010, fontSize = 24.sp),
                 modifier = Modifier.padding(horizontal = 10.dp)
             )
@@ -92,13 +94,13 @@ fun BuildContentScreen(modifier: Modifier = Modifier, navController: NavControll
 
         item {
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = "Featured Items", style = TextStyle(color = Color101010, fontSize = 20.sp))
+            Text(text = stringResource(id = R.string.featured_item_list), style = TextStyle(color = Color101010, fontSize = 20.sp))
             Featured(navController = navController, list = featuredList)
         }
 
         item {
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = "Other choices", style = TextStyle(color = Color101010, fontSize = 20.sp))
+            Text(text = stringResource(id = R.string.other_choices_list), style = TextStyle(color = Color101010, fontSize = 20.sp))
         }
 
         items(notFeaturedList) {

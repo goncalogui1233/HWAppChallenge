@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
 
@@ -17,7 +19,7 @@ import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
 fun BuildDetailDescription(modifier: Modifier = Modifier, itemDescription: String) {
     Column(modifier = modifier) {
         Text(
-            text = "Description",
+            text = stringResource(id = R.string.property_details_description),
             style = TextStyle(color = Color101010, fontSize = 22.sp)
         )
 
