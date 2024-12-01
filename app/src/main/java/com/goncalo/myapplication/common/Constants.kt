@@ -15,5 +15,9 @@ object Constants {
     //PropertyListViewModel
     const val LOAD_LIST = "load-list"
 
+    //CommonConstants
+    const val EUR = "EUR"
+    const val ZERO_VALUE = "0.0"
+
 
 }

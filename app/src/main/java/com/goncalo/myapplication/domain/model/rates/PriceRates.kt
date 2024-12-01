@@ -14,5 +14,4 @@ data class PriceRates(
     @SerializedName("rates")
     var priceRates: HashMap<String, Double> = hashMapOf()
 
-) {
-}
+)

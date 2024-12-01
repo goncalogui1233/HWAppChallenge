@@ -26,20 +26,3 @@ data class RateBreakdown(
     var propertyValue: Int = 0
 
 )
-
-/**
- * Extension that generates a key-value pair with the following content
- * First - Item name that will be used on screen
- * Second - The respective rating
- */
-fun RateBreakdown.convertToPair() : List<Pair<String, Int>> {
-    return arrayListOf<Pair<String, Int>>().apply {
-        add(Pair("Security", this@convertToPair.propertySecurity))
-        add(Pair("Location", this@convertToPair.propertyLocation))
-        add(Pair("Staff", this@convertToPair.propertyStaff))
-        add(Pair("Atmosphere", this@convertToPair.propertyFun))
-        add(Pair("Cleaning", this@convertToPair.propertyClean))
-        add(Pair("Facilities", this@convertToPair.propertyFacilities))
-        add(Pair("Value", this@convertToPair.propertyValue))
-    }
-}

@@ -28,4 +28,13 @@
     <!-- Error Screen-->
     <string name="button_try_again">Try again</string>
 
+    <!-- Rate Breakdown -->
+    <string name="rate_security">Security</string>
+    <string name="rate_location">Location</string>
+    <string name="rate_staff">Staff</string>
+    <string name="rate_atmosphere">Atmosphere</string>
+    <string name="rate_cleaning">Cleaning</string>
+    <string name="rate_facilities">Facilities</string>
+    <string name="rate_value">Value</string>
+
 </resources>

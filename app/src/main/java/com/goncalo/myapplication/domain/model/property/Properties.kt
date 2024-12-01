@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class Properties(
     @SerializedName("properties")
-    var listProperties: ArrayList<Property>
+    var listProperties: ArrayList<Property> = arrayListOf()
 )

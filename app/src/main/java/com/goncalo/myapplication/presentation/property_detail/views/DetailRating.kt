@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.extensions.formatRatingDecimals
+import com.goncalo.myapplication.domain.model.convertToPair
 import com.goncalo.myapplication.domain.model.property.RateBreakdown
 import com.goncalo.myapplication.domain.model.property.Rating
-import com.goncalo.myapplication.domain.model.property.convertToPair
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 
 @Composable
@@ -41,7 +41,7 @@ fun BuildDetailRating(modifier: Modifier = Modifier, rating: Rating, rateCategor
 
         rateCategory.convertToPair().forEach { rateItem ->
             BuildProgressItem(
-                itemName = rateItem.first,
+                itemName = stringResource(id = rateItem.first),
                 itemValue = rateItem.second
             )
         }
