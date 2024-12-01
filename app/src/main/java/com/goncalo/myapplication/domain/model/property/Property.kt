@@ -32,6 +32,9 @@ data class Property (
     var description: String,
 
     @SerializedName("ratingBreakdown")
-    var rateCategory: RateBreakdown = RateBreakdown()
+    var rateCategory: RateBreakdown = RateBreakdown(),
+
+    @SerializedName("facilities")
+    var facilitiesList: ArrayList<FacilitiesList> = arrayListOf()
 
 )

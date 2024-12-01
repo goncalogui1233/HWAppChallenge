@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material3.Icon
@@ -31,6 +32,7 @@ import com.goncalo.myapplication.presentation.common.screens.BuildErrorScreen
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailAddress
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailDescription
+import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailFacilities
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailNamePrice
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailPriceRates
 import com.goncalo.myapplication.presentation.property_detail.views.BuildDetailRating
@@ -85,7 +87,7 @@ fun BuildDetailScreen(
 
     val scrollState = rememberScrollState()
 
-    Column(modifier = modifier) {
+    Column(modifier = modifier.verticalScroll(scrollState)) {
         Row {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = null)
@@ -112,6 +114,10 @@ fun BuildDetailScreen(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 BuildDetailDescription(item = item)
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                BuildDetailFacilities(item = item)
 
                 Spacer(modifier = Modifier.height(20.dp))
 

@@ -50,7 +50,7 @@ fun BuildErrorScreen(
 
         Button(onClick = retryButtonAction, modifier = Modifier.padding(top = 8.dp)) {
             Text(
-                text = "Retry",
+                text = stringResource(id = R.string.button_try_again),
             )
         }
     }

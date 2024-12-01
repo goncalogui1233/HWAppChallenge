@@ -13,6 +13,8 @@
     <string name="property_details_lowest_price">(lowest price per night)</string>
     <string name="property_details_other_currencies">Other currencies? We got you</string>
     <string name="property_details_reviews">(%d reviews)</string>
+    <string name="property_details_check_facilities">Check our facilities</string>
+    <string name="property_details_our_facilities">Our facilities: </string>
 
     <!-- PropertyUseCase -->
     <string name="property_use_case_error">Unable to get the selected property, try again later.</string>
@@ -22,5 +24,8 @@
 
     <!-- RateUseCase -->
     <string name="rate_use_case_error">There was a problem loading rates. Try again later.</string>
+
+    <!-- Error Screen-->
+    <string name="button_try_again">Try again</string>
 
 </resources>
