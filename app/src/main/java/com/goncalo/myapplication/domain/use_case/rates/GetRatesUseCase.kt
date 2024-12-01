@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.domain.use_case.rates
 
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.Result
 import com.goncalo.myapplication.common.extensions.formatDecimalDigits
 import com.goncalo.myapplication.domain.model.rates.PriceRates
@@ -18,7 +19,7 @@ class GetRatesUseCase @Inject constructor(
         }.onErrorReturn {
             Result(
                 isSuccess = false,
-                errorMessage = "There was a problem loading rates. Try again later"
+                errorMessage = R.string.rate_use_case_error
             )
         }
     }
@@ -40,7 +41,7 @@ class GetRatesUseCase @Inject constructor(
         } else {
              Result(
                 isSuccess = false,
-                errorMessage = "No elements to check"
+                errorMessage = R.string.rate_use_case_error
             )
         }
 

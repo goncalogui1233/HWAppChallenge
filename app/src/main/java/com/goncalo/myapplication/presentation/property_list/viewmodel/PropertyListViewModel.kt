@@ -2,6 +2,7 @@ package com.goncalo.myapplication.presentation.property_list.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.use_case.network.GetTrackNetworkStatsUseCase
@@ -35,9 +36,12 @@ class PropertyListViewModel @Inject constructor(
                 _propertyList.emit(UIState.Content(content ?: arrayListOf()))
                 getTrackNetworkStatsUseCase(Constants.LOAD_LIST, this.requestDuration)
             } else {
-                _propertyList.emit(UIState.Error(errorMessage.orEmpty()))
+                _propertyList.emit(
+                    UIState.Error(
+                        errorMessage ?: R.string.property_list_use_case_error
+                    )
+                )
             }
         }
-        //_propertyList.emit(UIState.Error("Oh no, an error appeared whild loading information. \nPlease, try again"))
     }
 }

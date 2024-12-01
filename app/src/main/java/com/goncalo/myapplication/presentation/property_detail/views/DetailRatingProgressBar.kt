@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.sp
 import com.goncalo.myapplication.common.extensions.formatRatingDecimals
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
-import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
+import com.goncalo.myapplication.presentation.ui.theme.Color888787
 
 @Composable
 fun BuildProgressItem(modifier: Modifier = Modifier, itemName: String, itemValue: Int) {
@@ -39,7 +39,7 @@ fun BuildProgressItem(modifier: Modifier = Modifier, itemName: String, itemValue
             LinearProgressIndicator(
                 progress = { itemValue.toFloat().div(100) },
                 color = Color4C4DDC,
-                trackColor = ColorE1E1E1,
+                trackColor = Color888787,
                 strokeCap = StrokeCap.Round,
                 modifier = Modifier
                     .width(200.dp)
@@ -49,6 +49,7 @@ fun BuildProgressItem(modifier: Modifier = Modifier, itemName: String, itemValue
 
             Text(
                 text = itemValue.toDouble().formatRatingDecimals(),
+                modifier = Modifier.width(30.dp),
                 style = TextStyle(color = Color101010, fontSize = 18.sp)
             )
         }

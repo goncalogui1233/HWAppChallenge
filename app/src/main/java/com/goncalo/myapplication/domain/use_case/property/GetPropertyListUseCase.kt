@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.domain.use_case.property
 
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.Result
 import com.goncalo.myapplication.domain.model.property.Properties
 import com.goncalo.myapplication.domain.model.property.Property
@@ -25,7 +26,7 @@ class GetPropertyListUseCase @Inject constructor(
     }
 
     override fun handleException(obj: Exception): Result<List<Property>> {
-        return Result(isSuccess = false, errorMessage = obj.message)
+        return Result(isSuccess = false, errorMessage = R.string.property_list_use_case_error)
     }
 
 }

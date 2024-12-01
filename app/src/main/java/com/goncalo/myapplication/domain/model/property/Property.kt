@@ -35,6 +35,3 @@ data class Property (
     var rateCategory: RateBreakdown = RateBreakdown()
 
 )
-
-fun String.concatAddress(addressTwo: String) =
-    if (addressTwo.isNotEmpty()) "$this, $addressTwo" else this

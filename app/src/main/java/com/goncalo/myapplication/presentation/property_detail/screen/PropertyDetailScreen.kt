@@ -105,22 +105,22 @@ fun BuildDetailScreen(
 
                 BuildDetailNamePrice(propertyName = item.propertyName, price = item.lowPriceNight)
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 BuildDetailAddress(addressOne = item.addressOne, addressTwo = item.addressTwo)
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                BuildDetailDescription(itemDescription = item.description)
+                BuildDetailDescription(item = item)
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 BuildDetailRating(
                     rating = item.propertyRating,
                     rateCategory = item.rateCategory
                 )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 priceRates.invoke()
             }

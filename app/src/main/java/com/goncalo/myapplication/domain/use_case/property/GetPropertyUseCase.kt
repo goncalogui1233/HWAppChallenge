@@ -1,5 +1,6 @@
 package com.goncalo.myapplication.domain.use_case.property
 
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.Result
 import com.goncalo.myapplication.domain.model.property.Properties
 import com.goncalo.myapplication.domain.model.property.Property
@@ -15,7 +16,7 @@ class GetPropertyUseCase @Inject constructor(
     override fun handleException(obj: Exception): Result<Property> {
         return Result(
             isSuccess = false,
-            errorMessage = obj.message
+            errorMessage = R.string.rate_use_case_error
         )
     }
 
@@ -35,7 +36,7 @@ class GetPropertyUseCase @Inject constructor(
         } ?: run {
             return Result(
                 isSuccess = false,
-                errorMessage = "Unable to get the item, try again later"
+                errorMessage = R.string.rate_use_case_error
             )
         }
     }

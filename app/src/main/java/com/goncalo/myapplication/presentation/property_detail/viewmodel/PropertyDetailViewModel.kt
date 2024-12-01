@@ -2,6 +2,7 @@ package com.goncalo.myapplication.presentation.property_detail.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.Constants
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.use_case.network.GetTrackNetworkStatsUseCase
@@ -39,7 +40,8 @@ class PropertyDetailViewModel @Inject constructor(
                 }
                 getTrackNetworkStatsUseCase(Constants.LOAD_DETAILS, requestDuration)
             } else {
-                _detailUiState.value = UIState.Error(errorMessage.orEmpty())
+                _detailUiState.value =
+                    UIState.Error(errorMessage ?: R.string.property_use_case_error)
             }
         }
     }
@@ -52,10 +54,11 @@ class PropertyDetailViewModel @Inject constructor(
                         _coinRates.value = UIState.Content(c)
                     }
                 } else {
-                    _coinRates.value = UIState.Error(it.errorMessage.orEmpty())
+                    _coinRates.value =
+                        UIState.Error(it.errorMessage ?: R.string.rate_use_case_error)
                 }
             }, {
-                _coinRates.value = UIState.Error("")
+                _coinRates.value = UIState.Error(R.string.rate_use_case_error)
             })
     }
 

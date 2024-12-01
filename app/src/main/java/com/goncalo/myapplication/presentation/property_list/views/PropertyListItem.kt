@@ -34,7 +34,7 @@ import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.model.property.getFormattedURL
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
-import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
+import com.goncalo.myapplication.presentation.ui.theme.Color888787
 
 @Composable
 fun BuildPropertyItemWrapWidth(modifier: Modifier = Modifier, item: Property, onItemClicked: (Int) -> Unit) {
@@ -109,7 +109,7 @@ private fun PropertyListItem(modifier: Modifier, item: Property, onItemClicked: 
 
 @Composable
 private fun BuildItemPrice(modifier: Modifier = Modifier, price: String) {
-    val textStyle = TextStyle(fontSize = 16.sp, color = ColorE1E1E1)
+    val textStyle = TextStyle(fontSize = 16.sp, color = Color888787)
 
     Row (modifier = modifier){
         Text(text = stringResource(id = R.string.item_price_starts), style = textStyle)

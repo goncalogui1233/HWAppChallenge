@@ -14,4 +14,13 @@
     <string name="property_details_other_currencies">Other currencies? We got you</string>
     <string name="property_details_reviews">(%d reviews)</string>
 
+    <!-- PropertyUseCase -->
+    <string name="property_use_case_error">Unable to get the selected property, try again later.</string>
+
+    <!-- PropertyListUseCase-->
+    <string name="property_list_use_case_error">Unable to get the property list, try again later.</string>
+
+    <!-- RateUseCase -->
+    <string name="rate_use_case_error">There was a problem loading rates. Try again later.</string>
+
 </resources>
