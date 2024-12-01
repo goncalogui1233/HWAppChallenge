@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.goncalo.myapplication.R
-import com.goncalo.myapplication.common.extensions.formatDecimalDigits
+import com.goncalo.myapplication.common.extensions.formatRatingDecimals
 import com.goncalo.myapplication.domain.model.property.Property
 import com.goncalo.myapplication.domain.model.property.getFormattedURL
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
@@ -92,7 +92,7 @@ private fun PropertyListItem(modifier: Modifier, item: Property, onItemClicked: 
                         modifier = Modifier.size(20.dp)
                     )
                     Text(
-                        text = item.propertyRating.overallRating.toDouble().formatDecimalDigits(1),
+                        text = item.propertyRating.overallRating.toDouble().formatRatingDecimals(),
                         modifier = Modifier.padding(start = 4.dp)
                     )
                 }

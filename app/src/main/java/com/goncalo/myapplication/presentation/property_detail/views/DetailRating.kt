@@ -19,11 +19,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goncalo.myapplication.R
-import com.goncalo.myapplication.common.extensions.formatDecimalDigits
+import com.goncalo.myapplication.common.extensions.formatRatingDecimals
 import com.goncalo.myapplication.domain.model.property.RateBreakdown
 import com.goncalo.myapplication.domain.model.property.Rating
 import com.goncalo.myapplication.domain.model.property.convertToPair
-import com.goncalo.myapplication.presentation.common.components.BuildProgressItem
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 
 @Composable
@@ -41,7 +40,10 @@ fun BuildDetailRating(modifier: Modifier = Modifier, rating: Rating, rateCategor
         Spacer(modifier = Modifier.height(8.dp))
 
         rateCategory.convertToPair().forEach { rateItem ->
-            BuildProgressItem(itemName = rateItem.first, itemValue = rateItem.second)
+            BuildProgressItem(
+                itemName = rateItem.first,
+                itemValue = rateItem.second
+            )
         }
     }
 }
@@ -59,7 +61,7 @@ private fun BuildOverallRating(modifier: Modifier = Modifier, rating: Rating) {
             modifier = Modifier.size(28.dp)
         )
         Text(
-            text = rating.overallRating.toDouble().formatDecimalDigits(1),
+            text = rating.overallRating.toDouble().formatRatingDecimals(),
             style = TextStyle(color = Color101010, fontSize = 22.sp),
             modifier = Modifier.padding(start = 4.dp)
         )

@@ -11,3 +11,13 @@ fun Double.formatDecimalDigits(decimalDigits: Int): String {
     val value = decimalFormat.format(this).toDouble()
     return "%.${decimalDigits}f".format(value)
 }
+
+fun Double.formatRatingDecimals(): String {
+    val decimal = this.div(10)
+
+    return if(decimal == 10.0){
+        decimal.formatDecimalDigits(0)
+    } else {
+        decimal.formatDecimalDigits(1)
+    }
+}

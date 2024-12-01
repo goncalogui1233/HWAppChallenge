@@ -1,4 +1,4 @@
-package com.goncalo.myapplication.presentation.common.components
+package com.goncalo.myapplication.presentation.property_detail.views
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.goncalo.myapplication.common.extensions.formatRatingDecimals
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
 import com.goncalo.myapplication.presentation.ui.theme.ColorE1E1E1
@@ -47,7 +48,7 @@ fun BuildProgressItem(modifier: Modifier = Modifier, itemName: String, itemValue
             )
 
             Text(
-                text = "${itemValue.toFloat().div(10)}",
+                text = itemValue.toDouble().formatRatingDecimals(),
                 style = TextStyle(color = Color101010, fontSize = 18.sp)
             )
         }
