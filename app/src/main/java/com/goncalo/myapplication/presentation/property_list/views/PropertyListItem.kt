@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.goncalo.myapplication.R
 import com.goncalo.myapplication.common.extensions.formatRatingDecimals
+import com.goncalo.myapplication.domain.model.getFormattedURL
 import com.goncalo.myapplication.domain.model.property.Property
-import com.goncalo.myapplication.domain.model.property.getFormattedURL
 import com.goncalo.myapplication.presentation.ui.theme.Color101010
 import com.goncalo.myapplication.presentation.ui.theme.Color4C4DDC
 import com.goncalo.myapplication.presentation.ui.theme.Color888787

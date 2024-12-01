@@ -14,8 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.goncalo.myapplication.domain.model.getFormattedURL
 import com.goncalo.myapplication.domain.model.property.ImageData
-import com.goncalo.myapplication.domain.model.property.getFormattedURL
 
 @Composable
 fun BuildImageViewPager(modifier: Modifier = Modifier, imageList: List<ImageData>) {
