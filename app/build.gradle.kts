@@ -77,13 +77,6 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    //RxJava
-    implementation (libs.rxjava3.rxjava)
-    implementation (libs.adapter.rxjava3)
-
-    implementation(libs.androidx.runtime.rxjava3)
-
-
     //Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
