@@ -12,14 +12,24 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
+
+@Retention(AnnotationRetention.BINARY)
+@Qualifier
+annotation class IoDispatcher
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @IoDispatcher
+    fun provideIoDispatcher() = Dispatchers.IO
 
     @Provides
     @Singleton

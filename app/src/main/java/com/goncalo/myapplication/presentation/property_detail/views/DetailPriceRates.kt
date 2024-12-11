@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.goncalo.myapplication.R
+import com.goncalo.myapplication.common.extensions.formatDecimalDigits
 import com.goncalo.myapplication.presentation.common.UIState
 import com.goncalo.myapplication.presentation.common.components.ShimmerEffect
 import com.goncalo.myapplication.presentation.property_detail.viewmodel.PropertyDetailViewModel
@@ -41,7 +42,7 @@ fun BuildDetailPriceRates(
             BuildPriceRatesLoading()
         }
         is UIState.Content -> {
-            val rateList = (v.value as UIState.Content<List<Pair<String, String>>>).content
+            val rateList = (v.value as UIState.Content<HashMap<String, String>>).content
             BuildPriceRateContent(rateList = rateList)
         }
 
@@ -82,7 +83,7 @@ fun BuildPriceRatesLoading(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: List<Pair<String, String>>) {
+fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: HashMap<String, String>) {
     Column(modifier = modifier) {
         Text(
             text = stringResource(id = R.string.property_details_other_currencies),
@@ -97,11 +98,11 @@ fun BuildPriceRateContent(modifier: Modifier = Modifier, rateList: List<Pair<Str
         Spacer(modifier = Modifier.height(5.dp))
 
         LazyRow {
-            items(rateList) {
+            items(rateList.toList()) {
                 Card(modifier = Modifier.padding(horizontal = 5.dp)) {
                     Row(modifier = Modifier.padding(all = 15.dp)) {
                         Text(text = it.first)
-                        Text(text = it.second)
+                        Text(text = it.second.toDouble().formatDecimalDigits(2))
                     }
                 }
             }
